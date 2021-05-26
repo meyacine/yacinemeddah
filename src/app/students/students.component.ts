@@ -14,6 +14,8 @@ export class StudentsComponent implements OnInit {
   @Output()
   deletePerson: EventEmitter<Personne> = new EventEmitter<Personne>();
 
+  searchValue = '';
+
   constructor() { }
 
   ngOnInit(): void {

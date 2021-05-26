@@ -1,3 +1,4 @@
+<input type="text" [(ngModel)]="searchValue">
 <table class="table table-bordered">
   <thead>
   <tr>
@@ -7,10 +8,12 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let user of personnes">
+  <tr *ngFor="let user of personnes | search:searchValue">
     <td>{{user | fullName}}</td>
     <td>{{user.ddn | date:'dd/MM/YYYY'}}</td>
-    <td><button class="btn btn-sm btn-danger" (click)="delete(user)">(-)</button></td>
+    <td>
+      <button class="btn btn-sm btn-danger" (click)="delete(user)">(-)</button>
+    </td>
   </tr>
   </tbody>
 </table>
