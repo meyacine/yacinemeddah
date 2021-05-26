@@ -3,12 +3,14 @@
   <tr>
     <th>PRENOM & NOM</th>
     <th>DATE DE NAISSANCE</th>
+    <th>ACTION</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let user of personnes">
     <td>{{user | fullName}}</td>
     <td>{{user.ddn | date:'dd/MM/YYYY'}}</td>
+    <td><button class="btn btn-sm btn-danger" (click)="delete(user)">(-)</button></td>
   </tr>
   </tbody>
 </table>

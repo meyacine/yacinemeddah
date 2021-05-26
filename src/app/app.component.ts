@@ -12,4 +12,8 @@ export class AppComponent {
     {nom: 'Bozant', prenom: 'Jérémie', ddn: '1981-08-24'},
     {nom: 'Astier', prenom: 'Carole', ddn: '1995-12-01'},
   ];
+
+  handleDelete($event: Personne) {
+    this.donnees = this.donnees.filter(p => p!=$event);
+  }
 }

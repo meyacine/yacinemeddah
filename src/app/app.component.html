@@ -1,1 +1,3 @@
-<app-students [personnes]="donnees"></app-students>
+<app-students
+  [personnes]="donnees"
+  (deletePerson)="handleDelete($event)"></app-students>
