@@ -8,8 +8,8 @@ import {Personne} from "./personne";
 })
 export class AppComponent {
   donnees: Personne[] = [
-    {nom: 'LM', prenom: 'Bilel'},
-    {nom: 'BOZANT', prenom: 'Jérémie'},
-    {nom: 'ASTIER', prenom: 'Carole'},
+    {nom: '', prenom: '', ddn: '1999-08-14'},
+    {nom: 'Bozant', prenom: 'Jérémie', ddn: '1981-08-24'},
+    {nom: 'Astier', prenom: 'Carole', ddn: '1995-12-01'},
   ];
 }

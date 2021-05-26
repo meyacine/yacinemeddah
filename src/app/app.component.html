@@ -1,14 +1,1 @@
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>NOM</th>
-      <th>PRENOM</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let user of donnees">
-      <td>{{user.nom}}</td>
-      <td>{{user.prenom}}</td>
-    </tr>
-  </tbody>
-</table>
+<app-students [personnes]="donnees"></app-students>
