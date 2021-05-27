@@ -1,7 +1,7 @@
 <ng-container *ngIf="isReadonly">{{value}}</ng-container>
 <ng-container *ngIf="!isReadonly">
   <div class="input-group">
-    <input type="text" class="form-control" placeholder="Edit value" [(ngModel)]="value">
+    <input type="text" class="form-control" placeholder="Edit value" [formControl]="formControl">
     <div class="input-group-append">
       <button class="btn btn-outline-secondary" type="button" (click)="isReadonly = !isReadonly">
         <i class="fa fa-times"></i>

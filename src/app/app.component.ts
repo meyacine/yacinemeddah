@@ -1,19 +1,29 @@
-import { Component } from '@angular/core';
-import {Personne} from "./personne";
+import {Component, OnInit} from '@angular/core';
+import {Student} from "./student";
+import {StudentsService} from "./students.service";
+import {map, tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  donnees: Personne[] = [
-    {nom: 'John', prenom: 'Doe', ddn: '1999-08-14'},
-    {nom: 'Bozant', prenom: 'Jérémie', ddn: '1981-08-24'},
-    {nom: 'Astier', prenom: 'Carole', ddn: '1995-12-01'},
-  ];
+export class AppComponent implements OnInit {
+  donnees: Student[] = [];
 
-  handleDelete($event: Personne) {
-    this.donnees = this.donnees.filter(p => p!=$event);
+
+  constructor(private studentService: StudentsService) {
+  }
+
+  handleDelete($event: Student) {
+    this.donnees = this.donnees.filter(p => p != $event);
+  }
+
+  ngOnInit(): void {
+    this.studentService.findAll()
+      .pipe(
+        map(data => data.students),
+        tap(students => this.donnees = students),
+      ).subscribe();
   }
 }

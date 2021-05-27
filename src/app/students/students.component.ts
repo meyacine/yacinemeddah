@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Personne} from "../personne";
+import {Student} from "../student";
 
 @Component({
   selector: 'app-students',
@@ -9,10 +9,10 @@ import {Personne} from "../personne";
 export class StudentsComponent implements OnInit {
 
   @Input()
-  personnes: Personne[] = [];
+  personnes: Student[] = [];
 
   @Output()
-  deletePerson: EventEmitter<Personne> = new EventEmitter<Personne>();
+  deletePerson: EventEmitter<Student> = new EventEmitter<Student>();
 
   searchValue = '';
 
@@ -21,11 +21,11 @@ export class StudentsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  delete(user: Personne): void {
+  delete(user: Student): void {
     this.deletePerson.emit(user);
   }
 
-  submitValue($event: string, user: Personne, key: keyof Personne): void {
+  submitValue($event: string, user: Student, key: keyof Student): void {
     console.log($event);
   }
 }

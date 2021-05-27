@@ -5,6 +5,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {CommonModule} from "@angular/common";
 import {StudentsModule} from "./students/students.module";
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {SecurityInterceptor} from "./security.interceptor";
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import {StudentsModule} from "./students/students.module";
     CommonModule,
     StudentsModule,
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: SecurityInterceptor, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

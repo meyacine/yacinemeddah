@@ -1,4 +1,5 @@
 import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-editable',
@@ -6,12 +7,22 @@ import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@ang
   styleUrls: ['./editable.component.scss']
 })
 export class EditableComponent implements OnInit {
+  private _value: string | undefined;
+
+  get value(): string | undefined {
+    return this._value;
+  }
 
   @Input()
-  value: string | undefined;
+  set value(value: string | undefined) {
+    this._value = value;
+    this.formControl.setValue(this._value);
+  }
 
   @Output()
   valueChange = new EventEmitter<string>();
+
+  formControl = new FormControl();
 
   isReadonly = true;
 
