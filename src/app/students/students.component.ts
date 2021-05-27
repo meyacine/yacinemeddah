@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Student} from "../student";
-import {StudentsService} from "../students.service";
+import {StudentsService} from "./students.service";
 import {map, tap} from "rxjs/operators";
 
 @Component({
@@ -18,11 +18,7 @@ export class StudentsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.studentService.findAll()
-      .pipe(
-        map(data => data.students),
-        tap(students => this.personnes = students),
-      ).subscribe();
+    this.studentService.findAll().pipe(tap(students => this.personnes = students)).subscribe();
   }
 
   delete(user: Student) {

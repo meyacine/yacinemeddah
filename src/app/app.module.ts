@@ -4,9 +4,9 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {CommonModule} from "@angular/common";
-import {StudentsModule} from "./students/students.module";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {SecurityInterceptor} from "./security.interceptor";
+import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -15,8 +15,7 @@ import {SecurityInterceptor} from "./security.interceptor";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CommonModule,
-    StudentsModule,
+    SharedModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: SecurityInterceptor, multi: true},

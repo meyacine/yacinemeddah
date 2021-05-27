@@ -3,6 +3,7 @@ import {StudentsComponent} from './students.component';
 import {FullNamePipe} from './full-name.pipe';
 import {SearchPipe} from './search.pipe';
 import {SharedModule} from "../shared/shared.module";
+import {StudentsRoutingModule} from "./students-routing.module";
 
 
 @NgModule({
@@ -11,11 +12,9 @@ import {SharedModule} from "../shared/shared.module";
     FullNamePipe,
     SearchPipe
   ],
-  exports: [
-    SharedModule,
-  ],
   imports: [
     SharedModule,
+    StudentsRoutingModule,
   ]
 })
 export class StudentsModule { }

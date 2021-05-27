@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ClassesComponent } from './classes.component';
-
+import {NgModule} from '@angular/core';
+import {ClassesComponent} from './classes.component';
+import {SharedModule} from "../shared/shared.module";
+import {ClassesRoutingModule} from "./classes-routing.module";
 
 
 @NgModule({
@@ -9,7 +9,8 @@ import { ClassesComponent } from './classes.component';
     ClassesComponent
   ],
   imports: [
-    CommonModule
+    SharedModule,
+    ClassesRoutingModule,
   ]
 })
 export class ClassesModule { }
