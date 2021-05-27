@@ -1,5 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Student} from "../student";
+import {StudentsService} from "../students.service";
+import {map, tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-students',
@@ -8,25 +10,34 @@ import {Student} from "../student";
 })
 export class StudentsComponent implements OnInit {
 
-  @Input()
   personnes: Student[] = [];
-
-  @Output()
-  deletePerson: EventEmitter<Student> = new EventEmitter<Student>();
 
   searchValue = '';
 
-  constructor() {
+  constructor(private studentService: StudentsService) {
   }
 
   ngOnInit(): void {
+    this.studentService.findAll()
+      .pipe(
+        map(data => data.students),
+        tap(students => this.personnes = students),
+      ).subscribe();
   }
 
-  delete(user: Student): void {
-    this.deletePerson.emit(user);
+  delete(user: Student) {
+    this.personnes = this.personnes.filter(p => p != user);
   }
 
   submitValue($event: string, user: Student, key: keyof Student): void {
-    console.log($event);
+    this.personnes = this.personnes.map(personne => {
+      if (personne == user) {
+        return new Student({
+          ...personne,
+          [key]: $event,
+        });
+      }
+      return personne;
+    });
   }
 }

@@ -1,11 +1,12 @@
 export class Student {
+  // @ts-ignore
   nom: string;
+  // @ts-ignore
   prenom: string;
   ddn?: string;
 
-  constructor(nom: string, prenom: string, ddn: string) {
-    this.nom = nom;
-    this.prenom = prenom;
-    this.ddn = ddn;
+  constructor(obj?: Partial<Student>) {
+    Object.assign(this, obj);
   }
+
 }

@@ -12,7 +12,6 @@ import {SharedModule} from "../shared/shared.module";
     SearchPipe
   ],
   exports: [
-    StudentsComponent,
     SharedModule,
   ],
   imports: [
