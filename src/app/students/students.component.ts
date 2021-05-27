@@ -25,7 +25,7 @@ export class StudentsComponent implements OnInit {
     this.deletePerson.emit(user);
   }
 
-  submitValue($event: string, user: Student, key: keyof Student): void {
+  submitValue($event: string, user: Personne, key: keyof Personne): void {
     console.log($event);
   }
 }
