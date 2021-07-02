@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Student} from "../student";
-import {StudentsService} from "./students.service";
 import {map, tap} from "rxjs/operators";
+import {ActivatedRoute} from "@angular/router";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-students',
@@ -14,11 +15,12 @@ export class StudentsComponent implements OnInit {
 
   searchValue = '';
 
-  constructor(private studentService: StudentsService) {
+  constructor(private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.studentService.findAll().pipe(tap(students => this.personnes = students)).subscribe();
+    const data = this.route.data as Observable<{ students: Student[] }>;
+    data.pipe(map(({students}) => students)).pipe(tap(students => this.personnes = students)).subscribe();
   }
 
   delete(user: Student) {
