@@ -17,6 +17,7 @@ import {HttpClientModule} from "@angular/common/http";
   exports: [
     CommonModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     EditableComponent,
   ]

@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from "./home/home.component";
-import {IsLoggedGuard} from "./students/security/is-logged.guard";
+import {IsLoggedGuard} from "./security/is-logged.guard";
 import {LoginComponent} from "./login/login.component";
 
 const routes: Routes = [

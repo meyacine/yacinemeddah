@@ -4,9 +4,10 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
-import {SecurityInterceptor} from "./security.interceptor";
 import {SharedModule} from "./shared/shared.module";
-import { LoginComponent } from './login/login.component';
+import {LoginComponent} from './login/login.component';
+import {AuthenticationInterceptor} from "./security/authentication.interceptor";
+import {SecurityInterceptor} from "./security.interceptor";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,11 @@ import { LoginComponent } from './login/login.component';
     SharedModule,
   ],
   providers: [
+    // FIXME: Multiplte interceptors not working
+    // @see https://dev.to/angular/that-s-why-your-angular-errorinterceptor-may-not-work-5-seconds-fix-52m8
+    // also https://stackoverflow.com/questions/45633102/add-multiple-http-interceptors-to-angular-application
     {provide: HTTP_INTERCEPTORS, useClass: SecurityInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
 })

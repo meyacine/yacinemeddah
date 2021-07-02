@@ -1,4 +1,4 @@
-import {Injectable} from "@angular/core";
+import {Injectable, SkipSelf} from "@angular/core";
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from "@angular/router";
 import {Student} from '../student';
 import {Observable} from "rxjs";

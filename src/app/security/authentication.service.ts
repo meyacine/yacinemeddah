@@ -18,10 +18,14 @@ export class AuthenticationService {
   }
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem(this.JWT_KEY);
+    return !!this.getToken();
   }
 
   logout(): void {
     localStorage.removeItem(this.JWT_KEY)
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem(this.JWT_KEY);
   }
 }
