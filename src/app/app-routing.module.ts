@@ -1,11 +1,22 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from "./home/home.component";
+import {IsLoggedGuard} from "./students/security/is-logged.guard";
+import {LoginComponent} from "./login/login.component";
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'students', loadChildren: () => import('./students/students.module').then(m => m.StudentsModule)},
-  {path: 'classes', loadChildren: () => import('./classes/classes.module').then(m => m.ClassesModule)},
+  {path: 'login', component: LoginComponent},
+  {path: '', component: HomeComponent, canActivate: [IsLoggedGuard]},
+  {
+    path: 'students',
+    loadChildren: () => import('./students/students.module').then(m => m.StudentsModule),
+    canActivate: [IsLoggedGuard],
+  },
+  {
+    path: 'classes',
+    loadChildren: () => import('./classes/classes.module').then(m => m.ClassesModule),
+    canActivate: [IsLoggedGuard]
+  },
 ];
 
 @NgModule({
