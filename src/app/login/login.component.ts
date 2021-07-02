@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators,} from "@angular/forms";
 import {AuthenticationService} from "../security/authentication.service";
 
 @Component({
@@ -24,5 +24,13 @@ export class LoginComponent implements OnInit {
       const { username, password } = this.loginForm.value;
       this.authSerivce.login(username, password);
     }
+  }
+
+  get usernameControl(): FormControl {
+    return this.loginForm.get('username') as FormControl;
+  }
+
+  get passwordControl(): FormControl {
+    return this.loginForm.get('password') as FormControl;
   }
 }

@@ -1,0 +1,16 @@
+{{form.value | json}}
+<form [formGroup]="form">
+  <h1 class="h3 mb-3">Ajout d'un étudiant</h1>
+  <app-nom-et-prenom formControlName="nomPrenom"></app-nom-et-prenom>
+  <div class="input-group">
+    <label for="dateNaissance" class="sr-only">Date de naissance</label>
+    <input type="date" id="dateNaissance" class="form-control" [class.is-invalid]="dateNaissanceControl.invalid && dateNaissanceControl.touched"
+           placeholder="Date de naissance"
+           formControlName="dateNaissance"
+           autocomplete="off">
+    <div class="invalid-feedback">
+      Merci de choisir une Date de naissance
+    </div>
+  </div>
+  <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="submit()">Ajouter</button>
+</form>

@@ -1,3 +1,6 @@
+<div class="pull-right">
+  <a class="btn btn-outline-secondary" [routerLink]="['./add']"><i class="fa fa-plus"></i> Ajouter</a>
+</div>
 <div class="input-group mb-3">
   <input type="text" [(ngModel)]="searchValue" class="form-control" placeholder="Search text">
   <div class="input-group-append">
@@ -15,9 +18,15 @@
   </thead>
   <tbody>
   <tr *ngFor="let user of personnes | search:searchValue">
-    <td><app-editable [value]="user.nom" (valueChange)="submitValue($event, user, 'nom')"></app-editable></td>
-    <td><app-editable [value]="user.prenom" (valueChange)="submitValue($event, user, 'prenom')"></app-editable></td>
-    <td><app-editable [value]="user.ddn" (valueChange)="submitValue($event, user, 'ddn')"></app-editable></td>
+    <td>
+      <app-editable [value]="user.nom" (valueChange)="submitValue($event, user, 'nom')"></app-editable>
+    </td>
+    <td>
+      <app-editable [value]="user.prenom" (valueChange)="submitValue($event, user, 'prenom')"></app-editable>
+    </td>
+    <td>
+      <app-editable [value]="user.ddn" (valueChange)="submitValue($event, user, 'ddn')"></app-editable>
+    </td>
     <td>
       <button class="btn btn-danger" (click)="delete(user)"><i class="fa fa-trash"></i></button>
     </td>

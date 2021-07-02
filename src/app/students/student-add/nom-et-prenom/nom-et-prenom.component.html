@@ -1,0 +1,25 @@
+<div [formGroup]="innerForm">
+  <div class="input-group">
+    <label for="name" class="sr-only">Nom</label>
+    <input type="text"
+           id="name"
+           class="form-control"
+           [class.is-invalid]="nomControl.invalid && nomControl.touched"
+           placeholder="nom"
+           formControlName="nom"
+           autocomplete="off">
+    <div class="invalid-feedback">
+      Merci de choisir un nom
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="pwd" class="sr-only">Prenom</label>
+    <input type="text" id="pwd" class="form-control" [class.is-invalid]="prenomControl.invalid && prenomControl.touched"
+           placeholder="prenom"
+           formControlName="prenom"
+           autocomplete="off">
+    <div class="invalid-feedback">
+      Merci de choisir un pr&eacute;nom
+    </div>
+  </div>
+</div>

@@ -3,6 +3,7 @@ import {Student} from "../student";
 import {map, tap} from "rxjs/operators";
 import {ActivatedRoute} from "@angular/router";
 import {Observable} from "rxjs";
+import {StudentsService} from "./students.service";
 
 @Component({
   selector: 'app-students',
@@ -15,7 +16,7 @@ export class StudentsComponent implements OnInit {
 
   searchValue = '';
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private studentService: StudentsService) {
   }
 
   ngOnInit(): void {
@@ -24,7 +25,7 @@ export class StudentsComponent implements OnInit {
   }
 
   delete(user: Student) {
-    this.personnes = this.personnes.filter(p => p != user);
+    this.personnes = this.studentService.delete(user);
   }
 
   submitValue($event: string, user: Student, key: keyof Student): void {
