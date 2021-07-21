@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ClassesComponent } from './classes.component';
+import { AppStateTestingModule } from '../state/app.state.testing.module';
 
 describe('ClassesComponent', () => {
   let component: ClassesComponent;
@@ -8,6 +9,7 @@ describe('ClassesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [AppStateTestingModule],
       declarations: [ClassesComponent]
     })
       .compileComponents();
