@@ -6,10 +6,12 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let clazz of classes">
-    <td><app-editable [value]="clazz.name" (valueChange)="submitValue($event, clazz, 'name')"></app-editable></td>
+  <tr *ngFor="let clazz of classes$ | async">
     <td>
-      <button class="btn btn-danger" (click)="delete(clazz)"><i class="fa fa-trash"></i></button>
+      <app-editable (valueChange)="submitValue($event, clazz, 'name')" [value]="clazz.name"></app-editable>
+    </td>
+    <td>
+      <button (click)="delete(clazz)" class="btn btn-danger"><i class="fa fa-trash"></i></button>
     </td>
   </tr>
   </tbody>

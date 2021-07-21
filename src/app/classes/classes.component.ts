@@ -1,22 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import {ClassesService} from "./classes.service";
-import {tap} from "rxjs/operators";
-import {Classe} from "../classe";
+import { Component } from '@angular/core';
+import { Classe } from "../classe";
+import { Observable } from "rxjs";
+import { Select } from "@ngxs/store";
+import { AppState } from "../state/app.state";
 
 @Component({
   selector: 'app-classes',
   templateUrl: './classes.component.html',
   styleUrls: ['./classes.component.scss']
 })
-export class ClassesComponent implements OnInit {
-  classes: Classe[] = [];
-  searchValue = '';
-
-  constructor(private classesService: ClassesService) { }
-
-  ngOnInit(): void {
-    this.classesService.findAll().pipe(tap(classes => this.classes = classes)).subscribe();
-  }
+export class ClassesComponent {
+  @Select(AppState.getClasses)
+  classes$: Observable<Classe[]>;
 
   submitValue($event: any, clazz: any, nom: keyof Classe) {
 

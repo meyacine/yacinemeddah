@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 
 
-
 @NgModule({
   declarations: [
     HomeComponent
@@ -12,4 +11,5 @@ import { HomeComponent } from './home.component';
     CommonModule
   ]
 })
-export class HomeModule { }
+export class HomeModule {
+}

@@ -1,7 +1,7 @@
-import {NgModule} from '@angular/core';
-import {ClassesComponent} from './classes.component';
-import {SharedModule} from "../shared/shared.module";
-import {ClassesRoutingModule} from "./classes-routing.module";
+import { NgModule } from '@angular/core';
+import { ClassesComponent } from './classes.component';
+import { SharedModule } from "../shared/shared.module";
+import { ClassesRoutingModule } from "./classes-routing.module";
 
 
 @NgModule({
@@ -13,4 +13,5 @@ import {ClassesRoutingModule} from "./classes-routing.module";
     ClassesRoutingModule,
   ]
 })
-export class ClassesModule { }
+export class ClassesModule {
+}

@@ -1,24 +1,25 @@
 <form [formGroup]="loginForm">
   <h1 class="h3 mb-3">Connexion</h1>
   <div class="input-group">
-    <label for="name" class="sr-only">Email address</label>
-    <input type="text"
-           id="name"
+    <label class="sr-only" for="name">Email address</label>
+    <input [class.is-invalid]="usernameControl.invalid && usernameControl.touched"
+           autocomplete="off"
            class="form-control"
-           [class.is-invalid]="usernameControl.invalid && usernameControl.touched"
-           placeholder="Username"
            formControlName="username"
-           autocomplete="off">
+           id="name"
+           placeholder="Username"
+           type="text">
     <div class="invalid-feedback">
       Please choose a username.
     </div>
   </div>
   <div class="input-group">
-    <label for="pwd" class="sr-only">Password</label>
-    <input type="password" id="pwd" class="form-control" [class.is-invalid]="passwordControl.invalid && passwordControl.touched"
-           placeholder="Password"
+    <label class="sr-only" for="pwd">Password</label>
+    <input [class.is-invalid]="passwordControl.invalid && passwordControl.touched" autocomplete="off" class="form-control"
            formControlName="password"
-           autocomplete="off">
-    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login()">Sign in</button>
+           id="pwd"
+           placeholder="Password"
+           type="password">
+    <button (click)="login()" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
   </div>
 </form>

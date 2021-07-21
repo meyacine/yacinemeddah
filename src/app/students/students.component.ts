@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {Student} from "../student";
-import {map, tap} from "rxjs/operators";
-import {ActivatedRoute} from "@angular/router";
-import {Observable} from "rxjs";
-import {StudentsService} from "./students.service";
+import { Component, OnInit } from '@angular/core';
+import { Student } from "../student";
+import { tap } from "rxjs/operators";
+import { Observable } from 'rxjs';
+import { Select, Store } from "@ngxs/store";
+import { AppState } from "../state/app.state";
+import { App } from "../state/app.actions";
 
 @Component({
   selector: 'app-students',
@@ -12,20 +13,23 @@ import {StudentsService} from "./students.service";
 })
 export class StudentsComponent implements OnInit {
 
+  @Select(AppState.getStudents)
+  students$: Observable<Student[]>;
+
+
   personnes: Student[] = [];
 
   searchValue = '';
 
-  constructor(private route: ActivatedRoute, private studentService: StudentsService) {
+  constructor(private store: Store) {
   }
 
   ngOnInit(): void {
-    const data = this.route.data as Observable<{ students: Student[] }>;
-    data.pipe(map(({students}) => students)).pipe(tap(students => this.personnes = students)).subscribe();
+    this.students$.pipe(tap(students => this.personnes = students)).subscribe();
   }
 
   delete(user: Student) {
-    this.personnes = this.studentService.delete(user);
+    this.store.dispatch(new App.DeleteStudent(user));
   }
 
   submitValue($event: string, user: Student, key: keyof Student): void {

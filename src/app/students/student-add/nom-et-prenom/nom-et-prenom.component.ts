@@ -1,6 +1,6 @@
-import {Component, forwardRef, OnInit} from '@angular/core';
-import {ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from "@angular/forms";
-import {NomPrenom} from "./nom-prenom";
+import { Component, forwardRef, OnInit } from '@angular/core';
+import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators } from "@angular/forms";
+import { NomPrenom } from "./nom-prenom";
 
 @Component({
   selector: 'app-nom-et-prenom',
@@ -15,13 +15,24 @@ export class NomEtPrenomComponent implements OnInit, ControlValueAccessor {
   innerForm = new FormGroup({
     nom: new FormControl(null, [Validators.required]),
     prenom: new FormControl(null, [Validators.required]),
-  })
+  });
 
   constructor() {
   }
 
-  onChange: any = () => {}
-  onTouch: any = () => {}
+  get nomControl(): FormControl {
+    return this.innerForm.get('nom') as FormControl;
+  }
+
+  get prenomControl(): FormControl {
+    return this.innerForm.get('prenom') as FormControl;
+  }
+
+  onChange: any = () => {
+  }
+
+  onTouch: any = () => {
+  }
 
   ngOnInit(): void {
     this.innerForm.valueChanges.subscribe((value: NomPrenom) => {
@@ -42,14 +53,6 @@ export class NomEtPrenomComponent implements OnInit, ControlValueAccessor {
 
   writeValue(obj: NomPrenom): void {
     this.innerForm.patchValue(obj);
-  }
-
-  get nomControl(): FormControl {
-    return this.innerForm.get('nom') as FormControl;
-  }
-
-  get prenomControl(): FormControl {
-    return this.innerForm.get('prenom') as FormControl;
   }
 
 }

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EditableComponent } from './editable/editable.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -22,4 +22,5 @@ import {HttpClientModule} from "@angular/common/http";
     EditableComponent,
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+}

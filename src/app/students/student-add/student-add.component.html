@@ -3,14 +3,15 @@
   <h1 class="h3 mb-3">Ajout d'un étudiant</h1>
   <app-nom-et-prenom formControlName="nomPrenom"></app-nom-et-prenom>
   <div class="input-group">
-    <label for="dateNaissance" class="sr-only">Date de naissance</label>
-    <input type="date" id="dateNaissance" class="form-control" [class.is-invalid]="dateNaissanceControl.invalid && dateNaissanceControl.touched"
-           placeholder="Date de naissance"
+    <label class="sr-only" for="dateNaissance">Date de naissance</label>
+    <input [class.is-invalid]="dateNaissanceControl.invalid && dateNaissanceControl.touched" autocomplete="off" class="form-control"
            formControlName="dateNaissance"
-           autocomplete="off">
+           id="dateNaissance"
+           placeholder="Date de naissance"
+           type="date">
     <div class="invalid-feedback">
       Merci de choisir une Date de naissance
     </div>
   </div>
-  <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="submit()">Ajouter</button>
+  <button (click)="submit()" class="btn btn-lg btn-primary btn-block" type="submit">Ajouter</button>
 </form>

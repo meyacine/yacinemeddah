@@ -1,7 +1,7 @@
-import {Injectable} from "@angular/core";
-import {HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {AuthenticationService} from "./authentication.service";
+import { Injectable } from "@angular/core";
+import { HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { AuthenticationService } from "./authentication.service";
 
 @Injectable({
   providedIn: 'root',

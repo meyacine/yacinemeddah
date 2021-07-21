@@ -1,8 +1,8 @@
 <div class="pull-right">
-  <a class="btn btn-outline-secondary" [routerLink]="['./add']"><i class="fa fa-plus"></i> Ajouter</a>
+  <a [routerLink]="['./add']" class="btn btn-outline-secondary"><i class="fa fa-plus"></i> Ajouter</a>
 </div>
 <div class="input-group mb-3">
-  <input type="text" [(ngModel)]="searchValue" class="form-control" placeholder="Search text">
+  <input [(ngModel)]="searchValue" class="form-control" placeholder="Search text" type="text">
   <div class="input-group-append">
     <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search"></i></button>
   </div>
@@ -19,16 +19,16 @@
   <tbody>
   <tr *ngFor="let user of personnes | search:searchValue">
     <td>
-      <app-editable [value]="user.nom" (valueChange)="submitValue($event, user, 'nom')"></app-editable>
+      <app-editable (valueChange)="submitValue($event, user, 'nom')" [value]="user.nom"></app-editable>
     </td>
     <td>
-      <app-editable [value]="user.prenom" (valueChange)="submitValue($event, user, 'prenom')"></app-editable>
+      <app-editable (valueChange)="submitValue($event, user, 'prenom')" [value]="user.prenom"></app-editable>
     </td>
     <td>
-      <app-editable [value]="user.ddn" (valueChange)="submitValue($event, user, 'ddn')"></app-editable>
+      <app-editable (valueChange)="submitValue($event, user, 'ddn')" [value]="user.ddn"></app-editable>
     </td>
     <td>
-      <button class="btn btn-danger" (click)="delete(user)"><i class="fa fa-trash"></i></button>
+      <button (click)="delete(user)" class="btn btn-danger"><i class="fa fa-trash"></i></button>
     </td>
   </tr>
   </tbody>

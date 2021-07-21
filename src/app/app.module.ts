@@ -1,13 +1,17 @@
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {HTTP_INTERCEPTORS} from "@angular/common/http";
-import {SharedModule} from "./shared/shared.module";
-import {LoginComponent} from './login/login.component';
-import {AuthenticationInterceptor} from "./security/authentication.interceptor";
-import {SecurityInterceptor} from "./security.interceptor";
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { SharedModule } from "./shared/shared.module";
+import { LoginComponent } from './login/login.component';
+import { AuthenticationInterceptor } from "./security/authentication.interceptor";
+import { SecurityInterceptor } from "./security.interceptor";
+import { NgxsModule } from "@ngxs/store";
+import { environment } from "../environments/environment";
+import { NgxsReduxDevtoolsPluginModule } from "@ngxs/devtools-plugin";
+import { AppState } from "./state/app.state";
 
 @NgModule({
   declarations: [
@@ -18,6 +22,10 @@ import {SecurityInterceptor} from "./security.interceptor";
     BrowserModule,
     AppRoutingModule,
     SharedModule,
+    NgxsModule.forRoot([AppState], {
+      developmentMode: !environment.production
+    }),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
   ],
   providers: [
     // FIXME: Multiplte interceptors not working

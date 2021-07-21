@@ -1,12 +1,17 @@
-import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
-import {FormControl} from "@angular/forms";
+import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-editable',
   templateUrl: './editable.component.html',
   styleUrls: ['./editable.component.scss']
 })
-export class EditableComponent implements OnInit {
+export class EditableComponent {
+  @Output()
+  valueChange = new EventEmitter<string>();
+  formControl = new FormControl();
+  isReadonly = true;
+
   private _value: string | undefined;
 
   get value(): string | undefined {
@@ -19,13 +24,6 @@ export class EditableComponent implements OnInit {
     this.formControl.setValue(this._value);
   }
 
-  @Output()
-  valueChange = new EventEmitter<string>();
-
-  formControl = new FormControl();
-
-  isReadonly = true;
-
   @HostListener('dblclick')
   switchMode(): void {
     this.isReadonly = false;
@@ -34,12 +32,6 @@ export class EditableComponent implements OnInit {
   @HostListener('document:keydown.escape')
   switchReadonly(): void {
     this.isReadonly = true;
-  }
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
   }
 
   submitValue(value: string | undefined): void {
