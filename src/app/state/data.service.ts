@@ -13,6 +13,6 @@ export class DataService {
   }
 
   findAll(): Observable<{ students: Student[], classes: Classe[] }> {
-    return this.http.get<{ students: Student[], classes: Classe[] }>('/assets/students.json');
+    return this.http.get<{ students: Student[], classes: Classe[] }>('./assets/students.json');
   }
 }

@@ -25,7 +25,9 @@ import { AppState } from "./state/app.state";
     NgxsModule.forRoot([AppState], {
       developmentMode: !environment.production
     }),
-    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsReduxDevtoolsPluginModule.forRoot({
+      disabled: !!environment.production
+    }),
   ],
   providers: [
     // FIXME: Multiplte interceptors not working
